@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="COM_J2COMMERCE_FILTER_SEARCH_LABEL"
+            description="COM_J2COMMERCE_FILTER_SEARCH_WEIGHTS_DESC"
+            hint="COM_J2COMMERCE_FILTER_SEARCH_WEIGHTS_LABEL"
+            inputmode="search"
+        />
+
+        <field
+            name="enabled"
+            type="status"
+            label="JOPTION_SELECT_PUBLISHED"
+            optionsFilter="*,-2,0,1"
+            class="js-select-submit-on-change"
+        >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+    </fields>
+
+    <fields name="list">
+        <field
+            name="fullordering"
+            type="list"
+            label="JGLOBAL_SORT_BY"
+            default="a.weight_title ASC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.enabled ASC">COM_J2COMMERCE_HEADING_STATUS_ASC</option>
+            <option value="a.enabled DESC">COM_J2COMMERCE_HEADING_STATUS_DESC</option>
+            <option value="a.weight_title ASC">COM_J2COMMERCE_HEADING_WEIGHT_TITLE_ASC</option>
+            <option value="a.weight_title DESC">COM_J2COMMERCE_HEADING_WEIGHT_TITLE_DESC</option>
+            <option value="a.weight_unit ASC">COM_J2COMMERCE_HEADING_WEIGHT_UNIT_ASC</option>
+            <option value="a.weight_unit DESC">COM_J2COMMERCE_HEADING_WEIGHT_UNIT_DESC</option>
+            <option value="a.weight_value ASC">COM_J2COMMERCE_HEADING_WEIGHT_VALUE_ASC</option>
+            <option value="a.weight_value DESC">COM_J2COMMERCE_HEADING_WEIGHT_VALUE_DESC</option>
+            <option value="a.j2commerce_weight_id ASC">COM_J2COMMERCE_HEADING_ID_ASC</option>
+            <option value="a.j2commerce_weight_id DESC">COM_J2COMMERCE_HEADING_ID_DESC</option>
+        </field>
+
+        <field
+            name="limit"
+            type="limitbox"
+            label="JGLOBAL_LIST_LIMIT"
+            default="25"
+            onchange="this.form.submit();"
+        />
+    </fields>
+</form>

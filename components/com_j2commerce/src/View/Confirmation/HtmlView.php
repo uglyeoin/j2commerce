@@ -1,0 +1,191 @@
+<?php
+
+/**
+ * @package     J2Commerce
+ * @subpackage  com_j2commerce
+ *
+ * @copyright   (C)2024-2026 J2Commerce, LLC <https://www.j2commerce.com>
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+declare(strict_types=1);
+
+namespace J2Commerce\Component\J2commerce\Site\View\Confirmation;
+
+\defined('_JEXEC') or die;
+
+use J2Commerce\Component\J2commerce\Administrator\Helper\J2CommerceHelper;
+use J2Commerce\Component\J2commerce\Administrator\Helper\UtilitiesHelper;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Router\Route;
+
+class HtmlView extends BaseHtmlView
+{
+    public ?object $order            = null;
+    public string $plugin_html       = '';
+    public string $order_link        = '';
+    public ?object $params           = null;
+    public ?object $currency         = null;
+    public string $paction           = '';
+    public array $orderItems         = [];
+    public ?object $orderInfo        = null;
+    public array $orderShippings     = [];
+    public array $orderTaxes         = [];
+    public array $orderFees          = [];
+    public array $orderDiscounts     = [];
+    public bool $showingRecent       = false;
+
+    public function display($tpl = null): void
+    {
+        $app = Factory::getApplication();
+
+        UtilitiesHelper::sendNoCacheHeaders();
+
+        $this->params   = $app->getParams();
+        $this->currency = J2CommerceHelper::currency();
+
+        $this->registerFrameworkTemplatePaths($app);
+
+        /** @var \J2Commerce\Component\J2commerce\Site\Model\ConfirmationModel $model */
+        $model = $this->getModel();
+        $model->getState();
+
+        $this->order = $model->getOrder();
+
+        if ($this->order === null) {
+            $submittedToken = (string) $model->getState('token', '');
+
+            // A token was supplied but did not resolve to an authorised order →
+            // surface an error and redirect to the clean URL so the noisy
+            // ?option=...&view=...&token=... query string from the GET form is gone.
+            if ($submittedToken !== '') {
+                $app->enqueueMessage(
+                    Text::_('COM_J2COMMERCE_CONFIRMATION_TOKEN_INVALID'),
+                    'error'
+                );
+                $app->redirect(Route::_('index.php?option=com_j2commerce&view=confirmation', false));
+
+                return;
+            }
+
+            $user = $app->getIdentity();
+
+            // Guest → redirect to My Profile (has login + guest order lookup form)
+            if (!$user || $user->id <= 0) {
+                $app->enqueueMessage(
+                    Text::_('COM_J2COMMERCE_CONFIRMATION_LOGIN_TO_VIEW'),
+                    'notice'
+                );
+                $app->redirect(Route::_('index.php?option=com_j2commerce&view=myprofile', false));
+
+                return;
+            }
+
+            // Logged-in user with no orders → show token entry form
+            $this->_prepareDocument();
+            parent::display('noorder');
+
+            return;
+        }
+
+        // Check if showing most recent order (no order_id was in URL)
+        $this->showingRecent = (bool) $model->getState('showing_recent', false);
+
+        // Payment cancel detection
+        $this->paction = $app->getInput()->getCmd('paction', '');
+
+        // Order link based on configuration
+        if ($this->params->get('show_postpayment_orderlink', 1)) {
+            $this->order_link = Route::_('index.php?option=com_j2commerce&view=myprofile');
+        }
+
+        // Get plugin HTML from the payment flow (stored in user state)
+        $this->plugin_html = $model->getPluginHtml();
+
+        // Load order detail data
+        $this->orderItems     = $model->getOrderItems();
+        $this->orderInfo      = $model->getOrderInfo();
+        $this->orderShippings = $model->getOrderShippings();
+        $this->orderTaxes     = $model->getOrderTaxes();
+        $this->orderFees      = $model->getOrderFees();
+        $this->orderDiscounts = $model->getOrderDiscounts();
+
+        $this->_prepareDocument();
+
+        parent::display($tpl);
+    }
+
+    /**
+     * Resolve and register the per-menu-item framework folder so loadTemplate()
+     * and parent::display() pick up the correct framework subfolder.
+     */
+    private function registerFrameworkTemplatePaths(\Joomla\CMS\Application\CMSApplicationInterface $app): void
+    {
+        $framework = (string) $this->params->get('framework', 'bootstrap5');
+        $framework = preg_replace('/[^a-zA-Z0-9_-]/', '', $framework) ?? '';
+
+        $viewName = $this->getName();
+        $template = $app->getTemplate();
+
+        $compRoot = JPATH_COMPONENT . '/tmpl/' . $viewName;
+        $tplRoot  = JPATH_THEMES . '/' . $template . '/html/com_j2commerce/' . $viewName;
+
+        $candidate = '';
+        if ($framework !== '' && (is_dir($compRoot . '/' . $framework) || is_dir($tplRoot . '/' . $framework))) {
+            $candidate = $framework;
+        } elseif (is_dir($compRoot . '/bootstrap5') || is_dir($tplRoot . '/bootstrap5')) {
+            $candidate = 'bootstrap5';
+        } else {
+            $entries = is_dir($compRoot) ? scandir($compRoot) : [];
+            $entries = $entries ?: [];
+            sort($entries);
+            foreach ($entries as $entry) {
+                if ($entry === '.' || $entry === '..' || str_starts_with($entry, '.')) {
+                    continue;
+                }
+                if (is_dir($compRoot . '/' . $entry) && is_file($compRoot . '/' . $entry . '/default.php')) {
+                    $candidate = $entry;
+                    break;
+                }
+            }
+        }
+
+        if ($candidate !== '' && is_dir($compRoot . '/' . $candidate)) {
+            $this->addTemplatePath($compRoot . '/' . $candidate);
+        }
+        if (is_dir($tplRoot)) {
+            $this->addTemplatePath($tplRoot);
+        }
+        if ($candidate !== '' && is_dir($tplRoot . '/' . $candidate)) {
+            $this->addTemplatePath($tplRoot . '/' . $candidate);
+        }
+    }
+
+    protected function _prepareDocument(): void
+    {
+        $app  = Factory::getApplication();
+        $menu = $app->getMenu()->getActive();
+        $this->params->def('page_heading', $menu ? $menu->title : '');
+
+        $title = $this->params->get('page_title', '');
+
+        if (empty($title)) {
+            $title = Text::_('COM_J2COMMERCE_ORDER_CONFIRMATION');
+        }
+
+        $this->getDocument()->setTitle($title);
+
+        if ($this->params->get('menu-meta_description')) {
+            $this->getDocument()->setDescription($this->params->get('menu-meta_description'));
+        }
+
+        if ($this->params->get('menu-meta_keywords')) {
+            $this->getDocument()->setMetaData('keywords', $this->params->get('menu-meta_keywords'));
+        }
+
+        // Force noindex,nofollow for order confirmation pages
+        $this->getDocument()->setMetaData('robots', 'noindex, nofollow');
+    }
+}

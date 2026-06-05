@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="COM_J2COMMERCE_FILTER_SEARCH_LABEL"
+            description="COM_J2COMMERCE_FILTER_SEARCH_REPORTS_DESC"
+            hint="COM_J2COMMERCE_FILTER_SEARCH_REPORTS_LABEL"
+        />
+
+        <field
+            name="enabled"
+            type="pluginstatus"
+            label="JSTATUS"
+            description="JFIELD_ENABLED_DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+    </fields>
+
+    <fields name="list">
+        <field
+            name="fullordering"
+            type="list"
+            label="JGLOBAL_SORT_BY"
+            statuses="*,0,1,2,-2"
+            onchange="this.form.submit();"
+            default="a.name ASC"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.ordering ASC">COM_J2COMMERCE_HEADING_ORDERING_ASC</option>
+            <option value="a.ordering DESC">COM_J2COMMERCE_HEADING_ORDERING_DESC</option>
+            <option value="a.enabled ASC">COM_J2COMMERCE_HEADING_STATUS_ASC</option>
+            <option value="a.enabled DESC">COM_J2COMMERCE_HEADING_STATUS_DESC</option>
+            <option value="a.name ASC">COM_J2COMMERCE_REPORT_FILTER_NAME_ASC</option>
+            <option value="a.name DESC">COM_J2COMMERCE_REPORT_FILTER_NAME_DESC</option>
+            <option value="a.extension_id ASC">COM_J2COMMERCE_HEADING_ID_ASC</option>
+            <option value="a.extension_id DESC">COM_J2COMMERCE_HEADING_ID_DESC</option>
+        </field>
+
+        <field
+            name="limit"
+            type="limitbox"
+            label="JGLOBAL_LIST_LIMIT"
+            default="25"
+            onchange="this.form.submit();"
+        />
+    </fields>
+</form>

@@ -1,0 +1,270 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "com_j2commerce",
+  "version": "6.0.0",
+  "description": "J2Commerce Component Assets",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name": "com_j2commerce.admin",
+      "type": "script",
+      "uri": "com_j2commerce/js/administrator/j2commerce.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.dual-listbox",
+      "type": "script",
+      "uri": "com_j2commerce/vendor/dual-listbox/js/dual-listbox.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "package": "dual-listbox",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.chartjs",
+      "type": "script",
+      "uri": "com_j2commerce/vendor/chartjs/js/chart.umd.min.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "package": "chart.js",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.admin.modal-products",
+      "type": "script",
+      "uri": "com_j2commerce/js/administrator/modal-products.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.admin.css",
+      "type": "style",
+      "uri": "com_j2commerce/css/administrator/j2commerce_admin.css",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.admin.base",
+      "type": "style",
+      "uri": "com_j2commerce/css/administrator/j2commerce.css",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.dual-listbox.css",
+      "type": "style",
+      "uri": "com_j2commerce/vendor/dual-listbox/css/dual-listbox.css",
+      "package": "dual-listbox",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.listview",
+      "type": "style",
+      "uri": "com_j2commerce/css/administrator/listview.css",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.editview",
+      "type": "style",
+      "uri": "com_j2commerce/css/administrator/editview.css",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.currency-form",
+      "type": "script",
+      "uri": "com_j2commerce/js/currency-form.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.site",
+      "type": "script",
+      "uri": "com_j2commerce/js/site/j2commerce.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.site",
+      "type": "style",
+      "uri": "com_j2commerce/css/site/j2commerce.css",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.fancybox",
+      "type": "script",
+      "uri": "com_j2commerce/vendor/fancybox/js/fancybox.umd.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "package": "@fancyapps/ui",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.fancybox.css",
+      "type": "style",
+      "uri": "com_j2commerce/vendor/fancybox/css/fancybox.css",
+      "package": "@fancyapps/ui",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.swiper",
+      "type": "script",
+      "uri": "com_j2commerce/vendor/swiper/js/swiper-bundle.min.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "package": "swiper",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.swiper.css",
+      "type": "style",
+      "uri": "com_j2commerce/vendor/swiper/css/swiper-bundle.min.css",
+      "package": "swiper",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.leaflet",
+      "type": "script",
+      "uri": "com_j2commerce/vendor/leaflet/js/leaflet.js",
+      "dependencies": ["core"],
+      "package": "leaflet",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.leaflet.css",
+      "type": "style",
+      "uri": "com_j2commerce/vendor/leaflet/css/leaflet.css",
+      "package": "leaflet",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.zoom",
+      "type": "script",
+      "uri": "com_j2commerce/vendor/zoom-vanilla/js/zoom-vanilla.min.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "package": "zoom-vanilla.js",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.zoom.css",
+      "type": "style",
+      "uri": "com_j2commerce/vendor/zoom-vanilla/css/zoom.css",
+      "package": "zoom-vanilla.js",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.grapesjs",
+      "type": "script",
+      "uri": "com_j2commerce/vendor/grapesjs/js/grapes.min.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "package": "grapesjs",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.grapesjs.css",
+      "type": "style",
+      "uri": "com_j2commerce/vendor/grapesjs/css/grapes.min.css",
+      "package": "grapesjs",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.grapesjs.newsletter",
+      "type": "script",
+      "uri": "com_j2commerce/vendor/grapesjs/js/grapesjs-preset-newsletter.min.js",
+      "dependencies": ["core", "com_j2commerce.vendor.grapesjs"],
+      "attributes": {
+        "defer": true
+      },
+      "package": "grapesjs-preset-newsletter",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.uppy",
+      "type": "script",
+      "uri": "com_j2commerce/vendor/uppy/js/uppy.min.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "package": "@uppy/core",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.vendor.uppy.css",
+      "type": "style",
+      "uri": "com_j2commerce/vendor/uppy/css/uppy.min.css",
+      "package": "@uppy/core",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.filters",
+      "type": "script",
+      "uri": "com_j2commerce/js/site/j2commerce-filters.es6.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.cart-ajax",
+      "type": "script",
+      "uri": "com_j2commerce/js/site/cart-ajax.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.coupon-voucher",
+      "type": "script",
+      "uri": "com_j2commerce/js/site/coupon-voucher.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.coupon-voucher.css",
+      "type": "style",
+      "uri": "com_j2commerce/css/site/coupon-voucher.css",
+      "version": "6.0.0"
+    },
+    {
+      "name": "com_j2commerce.payment-methods",
+      "type": "script",
+      "uri": "com_j2commerce/js/site/payment-methods.js",
+      "dependencies": ["core"],
+      "attributes": {
+        "defer": true
+      },
+      "version": "6.0.0"
+    }
+  ]
+}

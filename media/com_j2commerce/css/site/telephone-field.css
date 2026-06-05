@@ -1,0 +1,130 @@
+/* Country selector button */
+.j2c-telephone-field .j2c-phone-country-btn {
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    white-space: nowrap;
+}
+
+.j2c-telephone-field img.j2c-phone-flag,
+.j2c-phone-country-dropdown img.j2c-phone-flag {
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+    vertical-align: middle;
+    border: none;
+    border-radius: 1px;
+}
+
+.j2c-telephone-field .j2c-phone-code {
+    font-size: 0.875rem;
+    color: var(--bs-secondary-color);
+}
+
+/* Floating label inside input-group: fix border radius and z-index */
+.j2c-telephone-field > .form-floating {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.j2c-telephone-field > .form-floating > .form-control {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+}
+
+/* Dropdown */
+.j2c-phone-country-dropdown {
+    min-width: 280px;
+}
+
+.j2c-phone-country-dropdown .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+}
+
+.j2c-phone-country-dropdown .text-body-secondary {
+    margin-inline-start: auto;
+    font-size: 0.8125rem;
+}
+
+/* uk-* rules apply when CustomFieldHelper framework='uikit'. */
+.j2c-phone-search-sticky {
+    position: sticky;
+    top: 0;
+    background: var(--uk-color-background, #fff);
+    z-index: 2;
+}
+
+.j2c-telephone-field.uk-flex {
+    gap: 0;
+    align-items: stretch;
+    width: 100%;
+}
+
+.j2c-telephone-field.uk-flex .j2c-phone-country-btn {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+    background: transparent;
+    border: 1px solid var(--uk-form-border-color, #e5e5e5);
+    border-inline-end: none;
+    text-transform: none;
+    font-weight: normal;
+    color: inherit;
+    padding-inline: 0.5rem;
+}
+
+.j2c-telephone-field.uk-flex .j2c-phone-country-btn:hover,
+.j2c-telephone-field.uk-flex .j2c-phone-country-btn:focus {
+    background: rgba(0, 0, 0, 0.02);
+    color: inherit;
+}
+
+.j2c-telephone-field.uk-flex .uk-input.j2c-phone-national {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.j2c-telephone-field.uk-flex .j2c-phone-flag {
+    border: none;
+}
+
+.j2c-telephone-field.uk-flex .j2c-phone-static-prefix {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: transparent;
+    border-inline-end: none;
+    padding: 0 0.5rem;
+}
+
+.j2c-telephone-field.uk-flex .j2c-phone-static-prefix .j2c-phone-flag {
+    border: none;
+    margin: 0;
+}
+
+.j2c-phone-search {
+    font-size: 0.875rem;
+}
+
+/* Responsive: stack on xs */
+@media (max-width: 575.98px) {
+    .j2c-telephone-field {
+        flex-wrap: wrap;
+    }
+
+    .j2c-telephone-field .j2c-phone-country-btn {
+        border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .j2c-telephone-field .j2c-phone-national,
+    .j2c-telephone-field > .form-floating > .form-control {
+        border-radius: 0 0 var(--bs-border-radius) var(--bs-border-radius);
+    }
+}

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="finder" method="upgrade">
+    <name>plg_finder_j2commerce</name>
+    <author>J2Commerce, LLC</author>
+    <creationDate>2025-01</creationDate>
+    <copyright>(C) 2024-2026 J2Commerce, LLC. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>support@j2commerce.com</authorEmail>
+    <authorUrl>https://www.j2commerce.com</authorUrl>
+    <version>6.2.2</version>
+    <description>PLG_FINDER_J2COMMERCE_XML_DESCRIPTION</description>
+    <namespace path="src">J2Commerce\Plugin\Finder\J2commerce</namespace>
+    <files>
+        <folder plugin="j2commerce">services</folder>
+        <folder>src</folder>
+    </files>
+    <languages>
+        <language tag="en-US">language/en-US/plg_finder_j2commerce.ini</language>
+        <language tag="en-US">language/en-US/plg_finder_j2commerce.sys.ini</language>
+        <language tag="en-GB">language/en-GB/plg_finder_j2commerce.ini</language>
+        <language tag="en-GB">language/en-GB/plg_finder_j2commerce.sys.ini</language>
+        <language tag="de-DE">language/de-DE/plg_finder_j2commerce.ini</language>
+        <language tag="de-DE">language/de-DE/plg_finder_j2commerce.sys.ini</language>
+        <language tag="es-ES">language/es-ES/plg_finder_j2commerce.ini</language>
+        <language tag="es-ES">language/es-ES/plg_finder_j2commerce.sys.ini</language>
+        <language tag="pt-PT">language/pt-PT/plg_finder_j2commerce.ini</language>
+        <language tag="pt-PT">language/pt-PT/plg_finder_j2commerce.sys.ini</language>
+        <language tag="it-IT">language/it-IT/plg_finder_j2commerce.ini</language>
+        <language tag="it-IT">language/it-IT/plg_finder_j2commerce.sys.ini</language>
+        <language tag="nl-NL">language/nl-NL/plg_finder_j2commerce.ini</language>
+        <language tag="nl-NL">language/nl-NL/plg_finder_j2commerce.sys.ini</language>
+        <language tag="fr-FR">language/fr-FR/plg_finder_j2commerce.ini</language>
+        <language tag="fr-FR">language/fr-FR/plg_finder_j2commerce.sys.ini</language>
+        <language tag="ru-RU">language/ru-RU/plg_finder_j2commerce.ini</language>
+        <language tag="ru-RU">language/ru-RU/plg_finder_j2commerce.sys.ini</language>
+        <language tag="el-GR">language/el-GR/plg_finder_j2commerce.ini</language>
+        <language tag="el-GR">language/el-GR/plg_finder_j2commerce.sys.ini</language>
+        <language tag="he-IL">language/he-IL/plg_finder_j2commerce.ini</language>
+        <language tag="he-IL">language/he-IL/plg_finder_j2commerce.sys.ini</language>
+        <language tag="ar-AA">language/ar-AA/plg_finder_j2commerce.ini</language>
+        <language tag="ar-AA">language/ar-AA/plg_finder_j2commerce.sys.ini</language>
+        <language tag="ja-JP">language/ja-JP/plg_finder_j2commerce.ini</language>
+        <language tag="ja-JP">language/ja-JP/plg_finder_j2commerce.sys.ini</language>
+        <language tag="pl-PL">language/pl-PL/plg_finder_j2commerce.ini</language>
+        <language tag="pl-PL">language/pl-PL/plg_finder_j2commerce.sys.ini</language>
+        <language tag="sv-SE">language/sv-SE/plg_finder_j2commerce.ini</language>
+        <language tag="sv-SE">language/sv-SE/plg_finder_j2commerce.sys.ini</language>
+        <language tag="zh-TW">language/zh-TW/plg_finder_j2commerce.ini</language>
+        <language tag="zh-TW">language/zh-TW/plg_finder_j2commerce.sys.ini</language>
+        <language tag="nb-NO">language/nb-NO/plg_finder_j2commerce.ini</language>
+        <language tag="nb-NO">language/nb-NO/plg_finder_j2commerce.sys.ini</language>
+        <language tag="da-DK">language/da-DK/plg_finder_j2commerce.ini</language>
+        <language tag="da-DK">language/da-DK/plg_finder_j2commerce.sys.ini</language>
+        <language tag="fi-FI">language/fi-FI/plg_finder_j2commerce.ini</language>
+        <language tag="fi-FI">language/fi-FI/plg_finder_j2commerce.sys.ini</language>
+        <language tag="tr-TR">language/tr-TR/plg_finder_j2commerce.ini</language>
+        <language tag="tr-TR">language/tr-TR/plg_finder_j2commerce.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="redirect_to"
+                    type="radio"
+                    layout="joomla.form.field.radio.switcher"
+                    label="PLG_FINDER_J2COMMERCE_REDIRECT_TO_LABEL"
+                    description="PLG_FINDER_J2COMMERCE_REDIRECT_TO_DESC"
+                    default="j2commerce"
+                    filter="word"
+                >
+                    <option value="j2commerce">PLG_FINDER_J2COMMERCE_REDIRECT_PRODUCT</option>
+                    <option value="article">PLG_FINDER_J2COMMERCE_REDIRECT_ARTICLE</option>
+                </field>
+                <field
+                    name="exclude_linked_articles"
+                    type="radio"
+                    label="PLG_FINDER_J2COMMERCE_EXCLUDE_LINKED_ARTICLES_LABEL"
+                    description="PLG_FINDER_J2COMMERCE_EXCLUDE_LINKED_ARTICLES_DESC"
+                    layout="joomla.form.field.radio.switcher"
+                    filter="integer"
+                    default="1"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                    name="show_product_image"
+                    type="radio"
+                    layout="joomla.form.field.radio.switcher"
+                    label="PLG_FINDER_J2COMMERCE_SHOW_PRODUCT_IMAGE_LABEL"
+                    description="PLG_FINDER_J2COMMERCE_SHOW_PRODUCT_IMAGE_DESC"
+                    default="1"
+                    filter="integer"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

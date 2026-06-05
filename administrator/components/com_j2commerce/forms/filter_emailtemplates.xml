@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="COM_J2COMMERCE_FILTER_SEARCH_LABEL"
+            description="COM_J2COMMERCE_FILTER_SEARCH_EMAILTEMPLATES_DESC"
+            placeholder="COM_J2COMMERCE_FILTER_SEARCH_PLACEHOLDER"
+            hint="COM_J2COMMERCE_FILTER_SEARCH_HINT"
+            class="form-control"
+        />
+
+        <!-- Column-matched filters (in column order: Status, Language, Order Status, Group, Email Type) -->
+
+        <field
+            name="enabled"
+            type="list"
+            label="JSTATUS"
+            description="COM_J2COMMERCE_FILTER_ENABLED_DESC"
+            onchange="this.form.submit();"
+            class="form-select"
+        >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+            <option value="-2">JTRASHED</option>
+        </field>
+
+        <field
+            name="language"
+            type="contentlanguage"
+            label="JFIELD_LANGUAGE_LABEL"
+            description="COM_J2COMMERCE_FILTER_LANGUAGE_DESC"
+            onchange="this.form.submit();"
+            class="form-select"
+        >
+            <option value="">JOPTION_SELECT_LANGUAGE</option>
+            <option value="*">JALL</option>
+        </field>
+
+        <field
+            name="orderstatus_id"
+            type="Orderstatus"
+            label="COM_J2COMMERCE_EMAILTEMPLATE_ORDERSTATUS"
+            description="COM_J2COMMERCE_EMAILTEMPLATE_ORDERSTATUS_DESC"
+            addfieldprefix ="J2Commerce\Component\J2commerce\Administrator\Field"
+            onchange="this.form.submit();"
+            class="form-select"
+        >
+            <option value="">COM_J2COMMERCE_SELECT_ORDER_STATUS</option>
+        </field>
+
+        <field
+            name="group_id"
+            type="usergrouplist"
+            label="COM_J2COMMERCE_EMAILTEMPLATE_GROUP"
+            description="COM_J2COMMERCE_EMAILTEMPLATE_GROUP_DESC"
+            onchange="this.form.submit();"
+            class="form-select"
+        >
+            <option value="">COM_J2COMMERCE_SELECT_USER_GROUP</option>
+        </field>
+
+        <field
+            name="email_type"
+            type="Emailtypelist"
+            label="COM_J2COMMERCE_EMAILTEMPLATE_EMAIL_TYPE"
+            description="COM_J2COMMERCE_EMAILTEMPLATE_EMAIL_TYPE_DESC"
+            addfieldprefix="J2Commerce\Component\J2commerce\Administrator\Field"
+            onchange="this.form.submit();"
+            class="form-select"
+        >
+            <option value="">COM_J2COMMERCE_EMAILTYPE_ALL</option>
+        </field>
+
+        <!-- Non-column filters -->
+
+        <field
+            name="paymentmethod"
+            type="Paymentmethods"
+            label="COM_J2COMMERCE_EMAILTEMPLATE_PAYMENTMETHOD"
+            description="COM_J2COMMERCE_EMAILTEMPLATE_PAYMENTMETHOD_DESC"
+            addfieldprefix ="J2Commerce\Component\J2commerce\Administrator\Field"
+            onchange="this.form.submit();"
+            class="form-select"
+        >
+            <option value="">COM_J2COMMERCE_SELECT_PAYMENT_METHOD</option>
+        </field>
+    </fields>
+
+    <fields name="list">
+        <field
+            name="fullordering"
+            type="list"
+            label="COM_J2COMMERCE_FILTER_SELECT_SORT_BY"
+            description="COM_J2COMMERCE_FILTER_SELECT_SORT_BY_DESC"
+            onchange="this.form.submit();"
+            default="a.j2commerce_emailtemplate_id ASC"
+            class="form-select"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.ordering ASC">COM_J2COMMERCE_HEADING_ORDERING_ASC</option>
+            <option value="a.ordering DESC">COM_J2COMMERCE_HEADING_ORDERING_DESC</option>
+            <option value="a.enabled ASC">COM_J2COMMERCE_HEADING_STATUS_ASC</option>
+            <option value="a.enabled DESC">COM_J2COMMERCE_HEADING_STATUS_DESC</option>
+            <option value="a.receiver_type ASC">COM_J2COMMERCE_EMAILTEMPLATE_RECEIVER_TYPE_SORT_ASC</option>
+            <option value="a.receiver_type DESC">COM_J2COMMERCE_EMAILTEMPLATE_RECEIVER_TYPE_SORT_DESC</option>
+            <option value="a.subject ASC">COM_J2COMMERCE_EMAILTEMPLATE_SUBJECT_SORT_ASC</option>
+            <option value="a.subject DESC">COM_J2COMMERCE_EMAILTEMPLATE_SUBJECT_SORT_DESC</option>
+            <option value="a.body_source ASC">COM_J2COMMERCE_EMAILTEMPLATE_SORT_BODY_SOURCE_ASC</option>
+            <option value="a.body_source DESC">COM_J2COMMERCE_EMAILTEMPLATE_SORT_BODY_SOURCE_DESC</option>
+            <option value="a.language ASC" requires="multilanguage">JGRID_HEADING_LANGUAGE_ASC</option>
+            <option value="a.language DESC" requires="multilanguage">JGRID_HEADING_LANGUAGE_DESC</option>
+            <option value="a.orderstatus_id ASC">COM_J2COMMERCE_EMAILTEMPLATE_SORT_ORDERSTATUS_ASC</option>
+            <option value="a.orderstatus_id DESC">COM_J2COMMERCE_EMAILTEMPLATE_SORT_ORDERSTATUS_DESC</option>
+            <option value="a.group_id ASC">COM_J2COMMERCE_EMAILTEMPLATE_SORT_USERGROUP_ASC</option>
+            <option value="a.group_id DESC">COM_J2COMMERCE_EMAILTEMPLATE_SORT_USERGROUP_DESC</option>
+            <option value="a.email_type ASC">COM_J2COMMERCE_EMAILTEMPLATE_SORT_EMAIL_TYPE_ASC</option>
+            <option value="a.email_type DESC">COM_J2COMMERCE_EMAILTEMPLATE_SORT_EMAIL_TYPE_DESC</option>
+            <option value="a.j2commerce_emailtemplate_id ASC">COM_J2COMMERCE_HEADING_ID_ASC</option>
+            <option value="a.j2commerce_emailtemplate_id DESC">COM_J2COMMERCE_HEADING_ID_DESC</option>
+        </field>
+
+        <field
+            name="limit"
+            type="limitbox"
+            label="JFIELD_PLG_SEARCH_SEARCHLIMIT_DESC"
+            description="JFIELD_PLG_SEARCH_SEARCHLIMIT_DESC"
+            class="form-select"
+            default="25"
+            onchange="this.form.submit();"
+        />
+    </fields>
+</form>
