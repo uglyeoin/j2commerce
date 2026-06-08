@@ -136,6 +136,18 @@
 !libraries/j2commerce/**
 
 # ===========================================================================
+# Testing Files
+# ===========================================================================
+!tests/
+!tests/**
+!.php-cs-fixer.dist.php
+!cypress.config.js
+!phpunit.xml.dist
+!.github/workflows/test.yml
+
+## requires some node_modules
+
+# ===========================================================================
 # ALWAYS IGNORE - Even if paths match above
 # ===========================================================================
 .mcp.json
